@@ -3,7 +3,8 @@ import { getSessionId } from "./session.js";
 
 // Set VITE_API_BASE_URL in Vercel's Environment Variables when deploying, e.g.
 // VITE_API_BASE_URL=https://ml-dashboard-j5lv.onrender.com
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "https://ml-dashboard-j5lv.onrender.com";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -15,7 +16,8 @@ const api = axios.create({
 
 export const getSampleData = () => api.get("/sample-data");
 
-export const predictSalary = (experience) => api.post("/predict", { experience });
+export const predictSalary = (experience) =>
+  api.post("/predict", { experience });
 
 export const getGraphUrl = () => `${API_BASE_URL}/graph?t=${Date.now()}`;
 
