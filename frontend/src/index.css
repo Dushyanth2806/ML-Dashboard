@@ -1,0 +1,212 @@
+:root {
+  /* ---- Color tokens ---- */
+  --bg: #f4f8fd;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --border: #e2e9f3;
+  --border-strong: #cbd8ea;
+
+  --ink-900: #0b1b34;
+  --ink-700: #26385a;
+  --ink-500: #5b6c8a;
+  --ink-400: #8494ac;
+
+  --blue-700: #163ea8;
+  --blue-600: #2054d6;
+  --blue-500: #3b7bf0;
+  --blue-100: #e4edfd;
+
+  --sky-500: #0ea5c4;
+  --sky-100: #e1f4f7;
+
+  --amber-500: #d98b1f;
+  --amber-100: #fbf1de;
+
+  --red-line: #dc2626;
+
+  --shadow-sm: 0 1px 2px rgba(11, 27, 52, 0.06), 0 1px 1px rgba(11, 27, 52, 0.04);
+  --shadow-md: 0 6px 20px rgba(19, 44, 92, 0.08), 0 2px 6px rgba(19, 44, 92, 0.05);
+  --shadow-lg: 0 16px 40px rgba(19, 44, 92, 0.12), 0 4px 12px rgba(19, 44, 92, 0.06);
+
+  /* ---- Type tokens ---- */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(59, 123, 240, 0.08), transparent 45%),
+    radial-gradient(circle at 100% 20%, rgba(14, 165, 196, 0.06), transparent 40%);
+  color: var(--ink-900);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--ink-900);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  color: var(--ink-500);
+  line-height: 1.6;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* ---- Layout shell ---- */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 24px 72px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-600);
+  background: var(--blue-100);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(32, 84, 214, 0.15);
+}
+
+.page-title {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+
+.page-subtitle {
+  font-size: 16px;
+  max-width: 640px;
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  padding: 13px 22px;
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+  color: white;
+  box-shadow: 0 8px 20px rgba(32, 84, 214, 0.28);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 10px 26px rgba(32, 84, 214, 0.36);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-700);
+  border: 1px solid var(--border-strong);
+}
+
+.btn-ghost:hover {
+  background: var(--blue-100);
+  border-color: var(--blue-500);
+  color: var(--blue-700);
+}
+
+/* ---- Scrollbar polish ---- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
